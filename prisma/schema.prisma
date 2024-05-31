@@ -3,17 +3,18 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model Student {
-  id          Int       @id @default(autoincrement())
-  name        String
-  email       String    @unique
-  password    String
-  classroomId Int
-  classroom   Classroom @relation(fields: [classroomId], references: [id])
+  id            Int            @id @default(autoincrement())
+  name          String
+  email         String         @unique
+  password      String
+  classroomId   Int
+  classroom     Classroom      @relation(fields: [classroomId], references: [id])
+  examResponses ExamResponse[]
 }
 
 model Teacher {
@@ -24,34 +25,32 @@ model Teacher {
 }
 
 model Classroom {
-  id       Int       @id @default(autoincrement())
-  name     String
-  students Student[]
-  exams    Exam[]
+  id            Int            @id @default(autoincrement())
+  name          String
+  students      Student[]
+  exams         Exam[]
+  examResponses ExamResponse[]
 }
 
 model Exam {
-  id          Int        @id @default(autoincrement())
-  title       String
-  description String?
-  examDate    DateTime
+  id            Int            @id @default(autoincrement())
+  title         String
+  description   String?
+  examDate      DateTime
+  classroomId   Int
+  classroom     Classroom      @relation(fields: [classroomId], references: [id])
+  questions     Json
+  examResponses ExamResponse[]
+}
+
+model ExamResponse {
+  id          Int       @id @default(autoincrement())
+  studentId   Int
+  student     Student   @relation(fields: [studentId], references: [id])
+  examId      Int
+  exam        Exam      @relation(fields: [examId], references: [id])
   classroomId Int
-  classroom   Classroom  @relation(fields: [classroomId], references: [id])
-  questions   Question[]
-}
-
-model Question {
-  id      Int      @id @default(autoincrement())
-  text    String
-  examId  Int
-  exam    Exam     @relation(fields: [examId], references: [id])
-  choices Choice[]
-}
-
-model Choice {
-  id         Int      @id @default(autoincrement())
-  text       String
-  isCorrect  Boolean
-  questionId Int
-  question   Question @relation(fields: [questionId], references: [id])
+  classroom   Classroom @relation(fields: [classroomId], references: [id])
+  responses   Json
+  submittedAt DateTime  @default(now())
 }

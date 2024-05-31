@@ -8,9 +8,10 @@ type ExamRequest = {
     description?: string;
     fileHTML: string;
     applicationDate: string;
+    questions: any[]; // Adicionando um campo para as perguntas
 }
 
-const CreateExamService = async ({ title, classroomName, description, fileHTML, applicationDate }: ExamRequest) => {
+const CreateExamService = async ({ title, classroomName, description, fileHTML, applicationDate, questions }: ExamRequest) => {
     if (title === "" || classroomName === "" || fileHTML === "" || applicationDate === "") {
         throw new Error("All fields must be filled");
     }
@@ -31,9 +32,7 @@ const CreateExamService = async ({ title, classroomName, description, fileHTML, 
             description: description,
             examDate: new Date(applicationDate),
             classroomId: classroom.id,
-            questions: {
-                create: [] 
-            }
+            questions: questions // Assumindo que 'questions' já está formatado como JSON
         },
         select: {
             id: true,
@@ -44,7 +43,8 @@ const CreateExamService = async ({ title, classroomName, description, fileHTML, 
                 select: {
                     name: true
                 }
-            }
+            },
+            questions: true
         }
     });
 

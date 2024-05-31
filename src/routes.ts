@@ -8,6 +8,7 @@ import { ResetExamController } from './controllers/exam/ResetExamController';
 import { CreateClassroomController } from './controllers/classroom/CreateClassroomController';
 import { CreateTeacherController } from './controllers/teacher/CreateTeacherController';
 import { AuthTeacherController } from './controllers/teacher/AuthTeacherController';
+import { CreateExamResponseController } from './controllers/exam/CreateExamResonseController';
 
 const router = Router();
 
@@ -23,7 +24,7 @@ router.post('/login/teacher', AuthTeacherController)
 router.post('/provas', CreateExamController)
 router.get('/provas', ListExamsController)
 
-router.post('/enviar-resposta', SendExamController)
+router.post('/enviar-resposta', CreateExamResponseController)
 router.post('/reiniciarProva', ResetExamController)
 
 router.post('/classroom', CreateClassroomController)
