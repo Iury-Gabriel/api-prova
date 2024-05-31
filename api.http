@@ -1,0 +1,42 @@
+POST http://localhost:3333/register
+Content-Type: application/json
+
+{
+    "name": "Iury Gabriel Miranda da Silva",
+    "email": "iury@gmail.com",
+    "password": "12345",
+    "sala": "204"
+}
+
+###
+
+POST http://localhost:3333/login
+Content-Type: application/json
+
+{
+    "email": "iury@gmail.com",
+    "password": "12345"
+}
+
+###
+
+POST http://localhost:3333/provas
+Content-Type: application/json
+
+{
+    "titulo": "Prova de Matematica 2",
+    "sala": "204",
+    "arquivo": "provamatematica.html",
+    "data": "30/05/2024"
+}
+
+###
+
+GET http://localhost:3333/provas
+Content-Type: application/json
+
+{
+    "sala": "204"
+}
+
+###
