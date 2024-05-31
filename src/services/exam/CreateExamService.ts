@@ -6,13 +6,12 @@ type ExamRequest = {
     title: string;
     classroomName: string;
     description?: string;
-    fileHTML: string;
     applicationDate: string;
     questions: any[]; // Adicionando um campo para as perguntas
 }
 
-const CreateExamService = async ({ title, classroomName, description, fileHTML, applicationDate, questions }: ExamRequest) => {
-    if (title === "" || classroomName === "" || fileHTML === "" || applicationDate === "") {
+const CreateExamService = async ({ title, classroomName, description, applicationDate, questions }: ExamRequest) => {
+    if (title === "" || classroomName === "" || applicationDate === "") {
         throw new Error("All fields must be filled");
     }
 

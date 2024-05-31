@@ -2,14 +2,13 @@ import { Request, Response } from "express";
 import { CreateExamService } from "../../services/exam/CreateExamService";
 
 const CreateExamController = async (req: Request, res: Response) => {
-    const { title, classroomName, description, fileHTML, applicationDate, questions } = req.body;
+    const { title, classroomName, description, applicationDate, questions } = req.body;
 
     try {
         const exam = await CreateExamService({
             title,
             classroomName,
             description,
-            fileHTML,
             applicationDate,
             questions
         });

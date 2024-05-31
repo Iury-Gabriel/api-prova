@@ -1,4 +1,4 @@
-POST http://localhost:3333/register/student
+POST http://localhost:3333/student/register
 Content-Type: application/json
 
 {
@@ -10,7 +10,7 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:3333/login/student
+POST http://localhost:3333/student/login
 Content-Type: application/json
 
 {
@@ -20,7 +20,7 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:3333/register/teacher
+POST http://localhost:3333/teacher/register
 Content-Type: application/json
 
 {
@@ -31,7 +31,7 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:3333/login/teacher
+POST http://localhost:3333/teacher/login
 Content-Type: application/json
 
 {
@@ -41,30 +41,65 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:3333/provas
+GET http://localhost:3333/student/2/available-exams
+
+###
+
+GET http://localhost:3333/student/exams/1
+
+###
+
+POST http://localhost:3333/student/exam-responses
 Content-Type: application/json
 
 {
-    "titulo": "Prova de Matematica 2",
-    "sala": "204",
-    "arquivo": "provamatematica.html",
-    "data": "30/05/2024"
+    "studentId": 1,
+    "examId": 1,
+    "classroomId": 8,
+    "responses": {
+
+    }
 }
 
 ###
 
-GET http://localhost:3333/provas
+GET http://localhost:3333/teacher/exams
+
+###
+
+POST http://localhost:3333/teacher/exams
 Content-Type: application/json
 
 {
-    "sala": "204"
+    "title": "Prova de Matematica",
+    "classroomName": "204",
+    "applicationDate": "30/05/2024",
+    "questions": {
+
+    }
 }
 
 ###
 
-POST http://localhost:3333/classroom
+PUT http://localhost:3333/teacher/exams/1
 Content-Type: application/json
 
 {
-    "sala": "304"
+    "title": "Prova de Matematica",
+    "examDate": "30/05/2024",
+    "questions": {
+        
+    }
 }
+
+###
+
+DELETE http://localhost:3333/teacher/exams/1
+
+###
+
+GET http://localhost:3333/classroom/8/students
+
+###
+
+GET http://localhost:3333/classroom/8/student/2/exam-responses
