@@ -53,4 +53,5 @@ model ExamResponse {
   classroom   Classroom @relation(fields: [classroomId], references: [id])
   responses   Json
   submittedAt DateTime  @default(now())
+  cheated     Boolean   @default(false)
 }

@@ -12,6 +12,7 @@ import { ListAvailableExamsController } from "./controllers/exam/ListAvailableEx
 import { ListAllExamsController } from "./controllers/exam/ListAllExamsController";
 import { ListStudentsInClassroomController } from "./controllers/classroom/ListStudentsInClassroomController";
 import { GetStudentExamResponsesController } from "./controllers/exam/GetStudentExamResponsesController";
+import { GetExamResponseController } from "./controllers/exam/GetExamResponseController";
 
 const router = express.Router();
 
@@ -25,6 +26,7 @@ router.post("/teacher/register", CreateTeacherController);
 router.get("/student/:studentId/available-exams", ListAvailableExamsController); // Listar provas disponíveis para a sala do estudante
 router.get("/student/exams/:id", GetExamController); // Obter detalhes de uma prova específica
 router.post("/student/exam-responses", CreateExamResponseController); // Enviar respostas da prova
+router.get("/student/:studentId/exam/:examId/response", GetExamResponseController);
 
 // Rotas de provas para professores
 router.get("/teacher/exams", ListAllExamsController); // Listar todas as provas criadas

@@ -24,6 +24,10 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     })
 })
 
+app.get('/ping', (req: Request, res: Response) => {
+    res.send('pong')
+})
+
 app.listen({ port: 3333, host: '0.0.0.0' }, () => {
     console.log('HTTP server running!');
 })

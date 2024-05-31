@@ -6,10 +6,11 @@ type ExamResponseRequest = {
     studentId: number;
     examId: number;
     classroomId: number;
-    responses: any;
+    responses: any; // Assuming responses is a JSON object
+    cheated: boolean; // Adicionado o campo cheated
 }
 
-const CreateExamResponseService = async ({ studentId, examId, classroomId, responses }: ExamResponseRequest) => {
+const CreateExamResponseService = async ({ studentId, examId, classroomId, responses, cheated }: ExamResponseRequest) => {
     if (!studentId || !examId || !classroomId || !responses) {
         throw new Error("All fields must be filled");
     }
@@ -19,7 +20,8 @@ const CreateExamResponseService = async ({ studentId, examId, classroomId, respo
             studentId: studentId,
             examId: examId,
             classroomId: classroomId,
-            responses: responses
+            responses: responses,
+            cheated: cheated
         },
         select: {
             id: true,
@@ -39,11 +41,12 @@ const CreateExamResponseService = async ({ studentId, examId, classroomId, respo
                 }
             },
             responses: true,
-            submittedAt: true
+            submittedAt: true,
+            cheated: true
         }
     });
 
     return examResponse;
 }
 
-export { CreateExamResponseService }
+export { CreateExamResponseService };
