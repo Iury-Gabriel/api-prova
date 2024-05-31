@@ -31,7 +31,7 @@ const CreateExamService = async ({ title, classroomName, description, applicatio
             description: description,
             examDate: new Date(applicationDate),
             classroomId: classroom.id,
-            questions: questions // Assumindo que 'questions' já está formatado como JSON
+            questions: questions
         },
         select: {
             id: true,

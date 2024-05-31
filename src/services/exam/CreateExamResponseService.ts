@@ -6,7 +6,7 @@ type ExamResponseRequest = {
     studentId: number;
     examId: number;
     classroomId: number;
-    responses: any; // Assuming responses is a JSON object
+    responses: any;
 }
 
 const CreateExamResponseService = async ({ studentId, examId, classroomId, responses }: ExamResponseRequest) => {
