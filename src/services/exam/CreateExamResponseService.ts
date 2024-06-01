@@ -6,13 +6,24 @@ type ExamResponseRequest = {
     studentId: number;
     examId: number;
     classroomId: number;
-    responses: any; // Assuming responses is a JSON object
-    cheated: boolean; // Adicionado o campo cheated
+    responses: any; // JSON
+    cheated: boolean;
 }
 
 const CreateExamResponseService = async ({ studentId, examId, classroomId, responses, cheated }: ExamResponseRequest) => {
     if (!studentId || !examId || !classroomId || !responses) {
         throw new Error("All fields must be filled");
+    }
+
+    const existingExamResponse = await prismaClient.examResponse.findMany({
+        where: {
+            studentId: studentId,
+            examId: examId
+        }
+    });
+
+    if (existingExamResponse.length > 0) {
+        throw new Error("Exam response already exists");
     }
 
     const examResponse = await prismaClient.examResponse.create({

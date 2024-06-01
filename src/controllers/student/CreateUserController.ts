@@ -3,13 +3,13 @@ import { CreateUserService } from "../../services/student/CreateUserService";
 
 
 const CreateUserController = async (req: Request, res: Response) => {
-    const { name, email, password, sala } = req.body;
+    const { name, email, password, classroom } = req.body;
 
     const user = await CreateUserService({
         name,
         email,
         password,
-        classroomName: sala
+        classroomName: classroom
     });
 
     return res.json(user);

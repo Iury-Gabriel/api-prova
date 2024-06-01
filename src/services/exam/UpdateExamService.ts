@@ -30,7 +30,7 @@ const UpdateExamService = async ({ id, title, description, examDate, questions }
         data: {
             title: title || existingExam.title,
             description: description || existingExam.description,
-            examDate: examDate ? new Date(examDate) : existingExam.examDate,
+            examDate: examDate ? examDate : existingExam.examDate,
             questions: questions || existingExam.questions
         }
     });

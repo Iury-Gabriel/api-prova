@@ -11,7 +11,7 @@ type ExamRequest = {
 }
 
 const CreateExamService = async ({ title, classroomName, description, applicationDate, questions }: ExamRequest) => {
-    if (title === "" || classroomName === "" || applicationDate === "") {
+    if (title === "" || classroomName === "" || applicationDate === "" || questions.length === 0) {
         throw new Error("All fields must be filled");
     }
 
@@ -29,7 +29,7 @@ const CreateExamService = async ({ title, classroomName, description, applicatio
         data: {
             title: title,
             description: description,
-            examDate: new Date(applicationDate),
+            examDate: applicationDate,
             classroomId: classroom.id,
             questions: questions
         },

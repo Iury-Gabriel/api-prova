@@ -2,10 +2,10 @@ POST http://localhost:3333/student/register
 Content-Type: application/json
 
 {
-    "name": "Iury Gabriel Miranda da Silva",
-    "email": "iury@gmail.com",
+    "name": "Edu",
+    "email": "edu@gmail.com",
     "password": "12345",
-    "sala": "204"
+    "classroom": "202"
 }
 
 ###
@@ -45,7 +45,7 @@ GET http://localhost:3333/student/2/available-exams
 
 ###
 
-GET http://localhost:3333/student/exams/1
+GET http://localhost:3333/student/exams/4
 
 ###
 
@@ -71,25 +71,50 @@ POST http://localhost:3333/teacher/exams
 Content-Type: application/json
 
 {
-    "title": "Prova de Matematica",
-    "classroomName": "204",
-    "applicationDate": "30/05/2024",
-    "questions": {
-
+    "title": "Prova de Serviços Juridicos",
+    "classroomName": "202",
+    "description": "Provinha de de base tecnica",
+    "applicationDate": "31/05/2024",
+    "questions": [
+    {
+      "question": "Qual é a capital do Brasil?",
+      "options": {
+        "a": "Rio de Janeiro",
+        "b": "Brasília",
+        "c": "São Paulo",
+        "d": "Salvador"
+      }
     }
+  ]
 }
 
 ###
 
-PUT http://localhost:3333/teacher/exams/1
+PUT http://localhost:3333/teacher/exams/2
 Content-Type: application/json
 
 {
-    "title": "Prova de Matematica",
-    "examDate": "30/05/2024",
-    "questions": {
-        
+    "examDate": "31/05/2024",
+    "questions": [
+    {
+      "question": "Quem escreveu 'Dom'?",
+      "options": {
+        "a": "Miguel de Cervantes",
+        "b": "William Shakespeare",
+        "c": "Jorge Luis Borges",
+        "d": "Fernando Pessoa"
+      }
+    },
+    {
+      "question": "Qual é o maior planeta do sistema solar?",
+      "options": {
+        "a": "Júpiter",
+        "b": "Terra",
+        "c": "Saturno",
+        "d": "Netuno"
+      }
     }
+  ]
 }
 
 ###
@@ -103,3 +128,7 @@ GET http://localhost:3333/classroom/8/students
 ###
 
 GET http://localhost:3333/classroom/8/student/2/exam-responses
+
+###
+
+GET http://localhost:3333/student/2/exam/44/response
