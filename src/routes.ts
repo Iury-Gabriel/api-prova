@@ -16,6 +16,7 @@ import { GetExamResponseController } from './controllers/exam/GetExamResponseCon
 import { ValidateTokenController } from './controllers/auth/ValidateTokenController'; // Novo controlador
 import { isAuthenticated } from './middlewares/isAuthenticated';
 import { GetExamTeacherResponseController } from './controllers/exam/GetExamTeacherResponseController';
+import { verifyTeacher } from './controllers/auth/VerifyTeacher';
 
 const router = express.Router();
 
@@ -25,6 +26,7 @@ router.post('/student/register', CreateUserController);
 router.post('/teacher/login', AuthTeacherController);
 router.post('/teacher/register', CreateTeacherController);
 router.get('/auth/validate-token', isAuthenticated, ValidateTokenController); // Nova rota de validação de token
+router.post('/verify-teacher', verifyTeacher);
 
 // Rotas de provas para estudantes
 router.get('/student/:studentId/available-exams', ListAvailableExamsController); // Listar provas disponíveis para a sala do estudante

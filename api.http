@@ -45,7 +45,7 @@ GET http://localhost:3333/student/2/available-exams
 
 ###
 
-GET http://localhost:3333/student/exams/4
+GET http://localhost:3333/student/exams/7
 
 ###
 
