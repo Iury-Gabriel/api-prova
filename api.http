@@ -45,7 +45,7 @@ GET http://localhost:3333/student/2/available-exams
 
 ###
 
-GET http://localhost:3333/student/exams/7
+GET http://localhost:3333/student/exams/9
 
 ###
 
@@ -131,4 +131,8 @@ GET http://localhost:3333/classroom/8/student/2/exam-responses
 
 ###
 
-GET http://localhost:3333/student/2/exam/44/response
+GET http://localhost:3333/student/2/exam/9/response
+
+###
+
+GET http://localhost:3333/teacher/2/exam/54/response

@@ -3,7 +3,7 @@ import { UpdateExamService } from "../../services/exam/UpdateExamService";
 
 const UpdateExamController = async (req: Request, res: Response) => {
     const { id } = req.params;
-    const { title, description, examDate, questions } = req.body;
+    const { title, description, examDate, classroomName, questions } = req.body;
 
     try {
         const updatedExam = await UpdateExamService({
@@ -11,6 +11,7 @@ const UpdateExamController = async (req: Request, res: Response) => {
             title,
             description,
             examDate,
+            classroomName,
             questions
         });
 

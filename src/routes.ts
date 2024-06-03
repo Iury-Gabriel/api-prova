@@ -17,6 +17,7 @@ import { ValidateTokenController } from './controllers/auth/ValidateTokenControl
 import { isAuthenticated } from './middlewares/isAuthenticated';
 import { GetExamTeacherResponseController } from './controllers/exam/GetExamTeacherResponseController';
 import { verifyTeacher } from './controllers/auth/VerifyTeacher';
+import { DuplicateExamController } from './controllers/exam/DuplicateExamController';
 
 const router = express.Router();
 
@@ -40,6 +41,7 @@ router.post('/teacher/exams', CreateExamController); // Criar uma nova prova
 router.put('/teacher/exams/:id', UpdateExamController); // Atualizar uma prova existente
 router.delete('/teacher/exams/:id', DeleteExamController); // Apagar uma prova existente
 router.get('/teacher/:studentId/exam/:examId/response', GetExamTeacherResponseController);
+router.post('/teacher/exams/:examId/duplicate', DuplicateExamController);
 
 // Rotas de sala de aula
 router.get('/classroom/:classroomId/students', ListStudentsInClassroomController); // Listar alunos em uma sala específica
